@@ -22,7 +22,7 @@ namespace People_Power.Data
                 new Role { Id = 3 , Name = "HRManager"}
                 );                       
             // Precomputed hashed password for "Admin@123"[-
-            var adminPasswordHash = "AQAAAAEAACcQAAAAEEXAMPLEHASHEXAMPLEHASH===";
+            var adminPasswordHash = "1234";
 
             var adminUser = new User
             {

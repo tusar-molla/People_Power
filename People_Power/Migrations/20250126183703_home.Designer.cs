@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using People_Power.Data;
 
@@ -10,9 +11,11 @@ using People_Power.Data;
 namespace People_Power.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250126183703_home")]
+    partial class home
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -89,7 +92,7 @@ namespace People_Power.Migrations
                         {
                             Id = 1,
                             Email = "admin@mail.com",
-                            PasswordHash = "1234",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEXAMPLEHASHEXAMPLEHASH===",
                             RoleId = 1,
                             UserName = "admin"
                         });

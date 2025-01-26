@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using People_Power.Interfaces;
 using People_Power.Repositories;
 using People_Power.ViewModel;
 
 namespace People_Power.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
         private readonly IUserRepository _userRepository;
@@ -37,11 +39,12 @@ namespace People_Power.Controllers
             {
                 TempData["SuccessMessage"] = "Role assigned successfully!";
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("UserList");
         }
-        public IActionResult Index()
+        public async Task<IActionResult> UserList()
         {
-            return View();
+            var users = await _userRepository.GetAllUsersAsync();
+            return View(users);
         }
     }
 }

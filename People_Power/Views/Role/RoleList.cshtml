@@ -1,0 +1,33 @@
+﻿@model IEnumerable<People_Power.Models.Role>
+
+@{
+    ViewData["Title"] = "Roles Management";
+}
+
+<div class="container mt-4">
+    <h2>Roles Management</h2>
+
+    <div class="mb-4">
+        <a href="@Url.Action("Create")" class="btn btn-primary">Add New Role</a>
+    </div>
+
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Role Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var role in Model)
+            {
+                <tr>
+                    <td>@role.Name</td>
+                    <td>
+                        <a href="@Url.Action("AssignRole", new { roleId = role.Id })" class="btn btn-warning btn-sm">Assign</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

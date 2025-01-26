@@ -1,0 +1,19 @@
+﻿@model People_Power.Models.Role
+
+@{
+    ViewData["Title"] = "Create Role";
+}
+
+<div class="container mt-4">
+    <h2>Create New Role</h2>
+
+    <form asp-action="CreateRoles" method="post">
+        <div class="form-group">
+            <label for="Name">Role Name</label>
+            <input type="text" class="form-control" id="Name" name="Name" placeholder="Enter role name" required>
+        </div>
+
+        <button type="submit" class="btn btn-success">Create Role</button>
+        <a href="@Url.Action("RoleList")" class="btn btn-secondary">Back to Roles List</a>
+    </form>
+</div>

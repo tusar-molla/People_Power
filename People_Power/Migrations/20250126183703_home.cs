@@ -7,7 +7,7 @@
 namespace People_Power.Migrations
 {
     /// <inheritdoc />
-    public partial class user_roleModelchange : Migration
+    public partial class home : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

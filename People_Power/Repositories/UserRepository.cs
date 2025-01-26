@@ -21,6 +21,12 @@ namespace People_Power.Repositories
                 .FirstOrDefaultAsync(u => u.Email == email);
         }
 
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
+        {
+            return await _context.Users
+                .Include(u => u.Role)
+                .ToListAsync();
+        }
         public async Task<User> GetUserByIdAsync(int id)
         {
             return await _context.Users
