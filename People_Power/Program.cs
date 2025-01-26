@@ -28,8 +28,11 @@ builder.Services.AddAuthentication("CookieAuth")
         config.ExpireTimeSpan = TimeSpan.FromHours(1);
     });
 
-// Add authorization
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("HRManagerOnly", policy => policy.RequireRole("HRManager"));
+});
 
 var app = builder.Build();
 

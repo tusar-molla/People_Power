@@ -8,5 +8,7 @@ namespace People_Power.Interfaces
         Task<bool> IsEmailExistsAsync(string email);
         Task<bool> CreateUserAsync(User user);
         Task<bool> IsUserNameExistsAsync(string userName);
+        Task<User> GetUserByIdAsync(int id);
+        Task<User> AssignRoleAsync(int userId, int roleId);
     }
 }

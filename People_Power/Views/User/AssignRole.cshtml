@@ -1,0 +1,39 @@
+﻿@model People_Power.ViewModel.AssignRoleViewModel
+
+@{
+    ViewData["Title"] = "Assign Role to User";
+}
+
+<div class="container mt-4">
+    <h2>Assign Role to User</h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <form asp-action="AssignRole" method="post">
+        <div class="form-group mb-3">
+            <label for="UserName">User Name</label>
+            <input type="text" class="form-control" id="UserName" value="@Model.UserName" disabled />
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="RoleId">Select Role</label>
+            <select class="form-control" id="RoleId" name="RoleId" required>
+                <option value="">Select a role</option>
+                @foreach (var role in Model.AvailableRoles)
+                {
+                    <option value="@role.Id" >
+                        @role.Name
+                    </option>
+                }
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Assign Role</button>
+        <a href="@Url.Action("Index", "User")" class="btn btn-secondary">Back to Users List</a>
+    </form>
+</div>
