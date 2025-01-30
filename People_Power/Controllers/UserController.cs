@@ -6,7 +6,7 @@ using People_Power.ViewModel;
 
 namespace People_Power.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
         private readonly IUserRepository _userRepository;
@@ -20,6 +20,10 @@ namespace People_Power.Controllers
         public async Task<IActionResult> AssignRole(int userId)
         {
             var user = await _userRepository.GetUserByIdAsync(userId);
+            if(user == null)
+            {
+                return NotFound();
+            }
             var roles = await _roleRepository.GetAllRolesAsync();
             var model = new AssignRoleViewModel
             {

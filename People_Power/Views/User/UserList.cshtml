@@ -20,7 +20,7 @@
                 <tr>
                     <td>@user.UserName</td>
                     <td>@user.Email</td>
-                    <td>@user.Role?.Name ?? "No Role Assigned"</td>
+                    <td>@user.Role?.Name</td>
                     <td>
                         <a href="@Url.Action("AssignRole", new { userId = user.Id })" class="btn btn-warning btn-sm">Assign Role</a>
                     </td>

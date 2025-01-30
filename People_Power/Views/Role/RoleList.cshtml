@@ -8,14 +8,14 @@
     <h2>Roles Management</h2>
 
     <div class="mb-4">
-        <a href="@Url.Action("Create")" class="btn btn-primary">Add New Role</a>
+        <a href="@Url.Action("CreateRoles")" class="btn btn-primary">Add New Role</a>
     </div>
 
     <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
                 <th>Role Name</th>
-                <th>Actions</th>
+               @*  <th>Actions</th> *@
             </tr>
         </thead>
         <tbody>
@@ -23,9 +23,9 @@
             {
                 <tr>
                     <td>@role.Name</td>
-                    <td>
-                        <a href="@Url.Action("AssignRole", new { roleId = role.Id })" class="btn btn-warning btn-sm">Assign</a>
-                    </td>
+                   @*  <td>
+                        <a href="@Url.Action("AssignRole","User" ,new { roleId = role.Id})" class="btn btn-warning btn-sm">Assign</a>
+                    </td> *@
                 </tr>
             }
         </tbody>

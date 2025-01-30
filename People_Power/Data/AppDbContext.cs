@@ -20,9 +20,8 @@ namespace People_Power.Data
                 new Role { Id = 1, Name = "Admin"},
                 new Role { Id = 2, Name = "RegularUser"},
                 new Role { Id = 3 , Name = "HRManager"}
-                );                       
-            // Precomputed hashed password for "Admin@123"[-
-            var adminPasswordHash = "1234";
+                );                                   
+            var adminPasswordHash = "123456";
 
             var adminUser = new User
             {

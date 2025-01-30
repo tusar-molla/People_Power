@@ -89,7 +89,7 @@ namespace People_Power.Migrations
                         {
                             Id = 1,
                             Email = "admin@mail.com",
-                            PasswordHash = "1234",
+                            PasswordHash = "123456",
                             RoleId = 1,
                             UserName = "admin"
                         });
@@ -98,17 +98,12 @@ namespace People_Power.Migrations
             modelBuilder.Entity("People_Power.Models.User", b =>
                 {
                     b.HasOne("People_Power.Models.Role", "Role")
-                        .WithMany("Users")
+                        .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("People_Power.Models.Role", b =>
-                {
-                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

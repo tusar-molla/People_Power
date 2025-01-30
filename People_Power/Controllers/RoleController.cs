@@ -18,7 +18,7 @@ namespace People_Power.Controllers
             var roles = await _roleRepository.GetAllRolesAsync();
             return View(roles);
         }
-
+        [HttpGet]
         public IActionResult CreateRoles()
         {
             return View();

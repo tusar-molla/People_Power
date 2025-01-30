@@ -7,7 +7,7 @@
 namespace People_Power.Migrations
 {
     /// <inheritdoc />
-    public partial class home : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -60,7 +60,7 @@ namespace People_Power.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Email", "PasswordHash", "RoleId", "UserName" },
-                values: new object[] { 1, "admin@mail.com", "AQAAAAEAACcQAAAAEEXAMPLEHASHEXAMPLEHASH===", 1, "admin" });
+                values: new object[] { 1, "admin@mail.com", "123456", 1, "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_RoleId",

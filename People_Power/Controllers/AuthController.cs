@@ -71,29 +71,31 @@ namespace People_Power.Controllers
         }
         
         [HttpGet]
-        public IActionResult Login() => View();
+        public async Task<IActionResult> Login() => View();
 
         [HttpPost]
         public async Task<IActionResult> Login(string email, string password)
         {
-            var user = await _userRepository.GetUserByEmailAsync(email);
-            if (user == null || user.PasswordHash != password) // Hash validation to be added later
+            var user = await _userRepository.GetUserByEmailAsync(email);            
+            var Passhash = _passwordHasher.HashPassword(password);
+            if (user == null && user.PasswordHash != Passhash)
             {
                 ViewBag.Message = "Invalid email or password.";
                 return View();
-            }
+            } 
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(ClaimTypes.Role, user.Role.Name)
             };
-            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
+            var identity = new ClaimsIdentity(claims, "CookieAuth");
+            var principal = new ClaimsPrincipal(identity);
+            await HttpContext.SignInAsync("CookieAuth", principal);
             return RedirectToAction("Index", "Home");
         }
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignOutAsync("CookieAuth");
             return RedirectToAction("Login");
         }
         public IActionResult AccessDenied() => View();

@@ -11,8 +11,8 @@ using People_Power.Data;
 namespace People_Power.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250126184157_passadmin")]
-    partial class passadmin
+    [Migration("20250130083231_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -92,7 +92,7 @@ namespace People_Power.Migrations
                         {
                             Id = 1,
                             Email = "admin@mail.com",
-                            PasswordHash = "1234",
+                            PasswordHash = "123456",
                             RoleId = 1,
                             UserName = "admin"
                         });
