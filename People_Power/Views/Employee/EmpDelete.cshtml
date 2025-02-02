@@ -1,0 +1,18 @@
+﻿@model People_Power.Models.Employee
+
+<h2>Delete Employee</h2>
+
+<div>
+    <h4>Are you sure you want to delete this employee?</h4>
+    <div>
+        <strong>Name:</strong> @Model.Name
+        <br />
+        <strong>Email:</strong> @Model.Email
+    </div>
+
+    <form asp-action="EmpDeleteConfirmed" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="@Url.Action("EmpList", "Employee")" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
