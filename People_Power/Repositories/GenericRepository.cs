@@ -17,10 +17,21 @@ namespace People_Power.Repositories
         public async Task<IEnumerable<T>> GetAllAsync() => await _dbSet.ToListAsync();
         public async Task<T> GetByIdAsync(int id) => await _dbSet.FindAsync(id);
 
-        public async Task AddAsync(T entity) => await _dbSet.AddAsync(entity);
+        public async Task AddAsync(T entity) 
+        {
+            await _dbSet.AddAsync(entity);
+            await _context.SaveChangesAsync();
+        }
 
-        public void Update(T entity) => _dbSet.Update(entity);
-
-        public void Delete(T entity) => _dbSet.Remove(entity);
+        public void Update(T entity) 
+        {
+            _dbSet.Update(entity);
+            _context.SaveChanges();
+        }
+        public void Delete(T entity)
+        {
+            _dbSet.Remove(entity);
+            _context.SaveChanges();
+        }
     }
 }

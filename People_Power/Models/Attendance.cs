@@ -8,6 +8,6 @@
         public DateTime Date { get; set; }
         public DateTime CheckInTime { get; set; }
         public DateTime CheckOutTime { get; set; }
-        public string ApprovalStatus { get; set; } // e.g. Present, Absent, On Leave, etc.
+        public string ApprovalStatus { get; set; } 
     }
 }
