@@ -60,6 +60,11 @@ namespace People_Power.Controllers
             {
                 return NotFound();
             }
+            var employees = _leaveRepository.GetEmployees();
+            var users = _leaveRepository.GetUsers();
+
+            ViewBag.Employees = new SelectList(employees, "Id", "Name");
+            ViewBag.Users = new SelectList(users, "Id", "UserName");
             return View(leave);
         }
         [HttpPost]
@@ -81,6 +86,11 @@ namespace People_Power.Controllers
                 {
                     NotFound();
                 }
+                var employees = _leaveRepository.GetEmployees();
+                var users = _leaveRepository.GetUsers();
+
+                ViewBag.Employees = new SelectList(employees, "Id", "Name");
+                ViewBag.Users = new SelectList(users, "Id", "UserName");
                 return RedirectToAction(nameof(LeaveList));
             }
             return View(leave);
@@ -88,6 +98,8 @@ namespace People_Power.Controllers
         public async Task<IActionResult> DeleteLeave(int id)
         {
             var leave = await _leaveRepository.GetByIdAsync(id);
+            var users = _leaveRepository.GetUsers();
+            var employees = _leaveRepository.GetEmployees();
             if (leave == null)
             {
                 return NotFound();
