@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using People_Power.Interfaces;
-using People_Power.Repositories;
 using People_Power.ViewModel;
 
 namespace People_Power.Controllers
@@ -20,7 +18,7 @@ namespace People_Power.Controllers
         public async Task<IActionResult> AssignRole(int userId)
         {
             var user = await _userRepository.GetUserByIdAsync(userId);
-            if(user == null)
+            if (user == null)
             {
                 return NotFound();
             }
@@ -39,7 +37,7 @@ namespace People_Power.Controllers
         public async Task<IActionResult> AssignRole(AssignRoleViewModel model)
         {
             var result = await _userRepository.AssignRoleAsync(model.UserId, model.RoleId);
-            if (result!= null)
+            if (result != null)
             {
                 TempData["SuccessMessage"] = "Role assigned successfully!";
             }

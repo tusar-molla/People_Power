@@ -1,0 +1,15 @@
+﻿@model People_Power.Models.Payroll
+@{
+    ViewData["Title"] = "Delete Payroll";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>Are you sure you want to delete the payroll for employee <strong>@Model.Employee?.Name</strong> dated @Model.PayrollDate.ToString("d")?</p>
+
+<form asp-action = "PrDelete" method="post" class="needs-validation" novalidate>
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="@Url.Action("PrList", "Payroll")" class="btn btn-secondary">Cancel</a>
+</form>

@@ -4,7 +4,7 @@ using People_Power.Interfaces;
 using People_Power.Models;
 
 namespace People_Power.Repositories
-{    
+{
     public class RoleRepository : IRoleRepository
     {
         private readonly AppDbContext _context;

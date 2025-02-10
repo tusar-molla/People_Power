@@ -27,7 +27,7 @@ namespace People_Power.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _departmentRepository.AddAsync(department);                
+                await _departmentRepository.AddAsync(department);
                 return RedirectToAction(nameof(DeptList));
             }
             return View(department);
@@ -75,7 +75,7 @@ namespace People_Power.Controllers
         public async Task<IActionResult> DeptDeleteConfirmed(int id)
         {
             var department = await _departmentRepository.GetByIdAsync(id);
-            if(department != null)
+            if (department != null)
             {
                 _departmentRepository.Delete(department);
             }

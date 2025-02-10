@@ -1,0 +1,40 @@
+﻿@model IEnumerable<People_Power.Models.Payroll>
+@{
+    ViewData["Title"] = "Payroll List";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<a href="@Url.Action("PrCreate", "Payroll")" class="btn btn-primary mb-3">Add New Payroll</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Basic Salary</th>
+            <th>Bonus</th>
+            <th>Deduction</th>
+            <th>Total Salary</th>
+            <th>Payroll Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var payroll in Model)
+        {
+            <tr>
+                <td>@payroll.Employee?.Name</td>
+                <td>@payroll.BasicSalary</td>
+                <td>@payroll.Bonus</td>
+                <td>@payroll.Deduction</td>
+                <td>@payroll.TotalSalary</td>
+                <td>@payroll.PayrollDate.ToString("d")</td>
+                <td>
+                    <a href="@Url.Action("PrDetails", "Payroll", new { id = payroll.Id })" class="btn btn-info btn-sm">Details</a>
+                    <a href="@Url.Action("PrEdit", "Payroll", new { id = payroll.Id })" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="@Url.Action("PrDelete", "Payroll", new { id = payroll.Id })" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -10,7 +10,7 @@
         <strong>Email:</strong> @Model.Email
     </div>
 
-    <form asp-action="EmpDeleteConfirmed" method="post">
+    <form asp-action="EmpDelete" method="post">
         <input type="hidden" asp-for="Id" />
         <button type="submit" class="btn btn-danger">Delete</button>
         <a href="@Url.Action("EmpList", "Employee")" class="btn btn-secondary">Cancel</a>

@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using People_Power.Interfaces;
-using System.Security.Claims;
 using People_Power.Models;
 using People_Power.ViewModel;
+using System.Security.Claims;
 
 namespace People_Power.Controllers
 {
@@ -69,20 +68,20 @@ namespace People_Power.Controllers
 
             return View(model);
         }
-        
+
         [HttpGet]
         public async Task<IActionResult> Login() => View();
 
         [HttpPost]
         public async Task<IActionResult> Login(string email, string password)
         {
-            var user = await _userRepository.GetUserByEmailAsync(email);            
+            var user = await _userRepository.GetUserByEmailAsync(email);
             var Passhash = _passwordHasher.HashPassword(password);
             if (user == null && user.PasswordHash != Passhash)
             {
                 ViewBag.Message = "Invalid email or password.";
                 return View();
-            } 
+            }
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.UserName),

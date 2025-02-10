@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public int EmployeeId { get; set; }
-        public Employee Employee { get; set; }
+        public Employee? Employee { get; set; }
         public DateTime LeaveStartDate { get; set; }
         public DateTime LeaveEndDate { get; set; }
         public string LeaveType { get; set; } // e.g. Paid, Unpaid, Sick, etc.

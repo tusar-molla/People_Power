@@ -1,9 +1,7 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using People_Power.Models;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
+using System.Diagnostics;
 namespace People_Power.Controllers
 {
     public class HomeController : Controller
@@ -20,7 +18,7 @@ namespace People_Power.Controllers
             return View();
         }
 
-        [Authorize (Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Privacy()
         {
             return View();

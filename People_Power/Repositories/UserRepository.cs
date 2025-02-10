@@ -5,7 +5,7 @@ using People_Power.Models;
 
 namespace People_Power.Repositories
 {
-    public class UserRepository : GenericRepository<User> , IUserRepository
+    public class UserRepository : GenericRepository<User>, IUserRepository
     {
         private readonly AppDbContext _context;
 
@@ -82,6 +82,6 @@ namespace People_Power.Repositories
 }
 
 
-    
-   
+
+
 

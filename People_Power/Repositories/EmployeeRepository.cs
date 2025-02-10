@@ -5,10 +5,10 @@ using People_Power.Models;
 
 namespace People_Power.Repositories
 {
-    public class EmployeeRepository: GenericRepository<Employee>, IEmployeeRepository
+    public class EmployeeRepository : GenericRepository<Employee>, IEmployeeRepository
     {
         public readonly AppDbContext _context;
-        public EmployeeRepository(AppDbContext context): base(context)
+        public EmployeeRepository(AppDbContext context) : base(context)
         {
             context = _context;
         }

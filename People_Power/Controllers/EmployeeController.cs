@@ -20,7 +20,6 @@ namespace People_Power.Controllers
             var employee = await _employeeRepository.GetAllAsync();
             return View(employee);
         }
-
         public async Task<IActionResult> EmpDetails(int id)
         {
             var employee = await _employeeRepository.GetByIdAsync(id);
@@ -50,7 +49,6 @@ namespace People_Power.Controllers
             ViewBag.Departments = new SelectList(departments, "Id", "Name", employee.DepartmentId);
             return View(employee);
         }
-
         public async Task<IActionResult> EmpEdit(int id)
         {
             var employee = await _employeeRepository.GetByIdAsync(id);
@@ -62,7 +60,6 @@ namespace People_Power.Controllers
             ViewBag.Departments = new SelectList(departments, "Id", "Name", employee.DepartmentId);
             return View(employee);
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EmpEdit(int id, Employee employee)
@@ -74,14 +71,12 @@ namespace People_Power.Controllers
             if (ModelState.IsValid)
             {
                 _employeeRepository.Update(employee);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(EmpList));
             }
-
             var departments = await _departmentRepository.GetAllAsync();
             ViewBag.Departments = new SelectList(departments, "Id", "Name", employee.DepartmentId);
             return View(employee);
         }
-
         public async Task<IActionResult> EmpDelete(int id)
         {
             var employee = await _employeeRepository.GetByIdAsync(id);
@@ -91,8 +86,6 @@ namespace People_Power.Controllers
             }
             return View(employee);
         }
-
-        // POST: Employee/Delete/5
         [HttpPost, ActionName("EmpDelete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EmpDeleteConfirmed(int id)
@@ -100,7 +93,7 @@ namespace People_Power.Controllers
             var employee = await _employeeRepository.GetByIdAsync(id);
             if (employee != null)
             {
-                _employeeRepository.Delete(employee);               
+                _employeeRepository.Delete(employee);
             }
             return RedirectToAction(nameof(EmpList));
         }

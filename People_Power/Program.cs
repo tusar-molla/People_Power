@@ -1,5 +1,5 @@
-using People_Power.Data;
 using Microsoft.EntityFrameworkCore;
+using People_Power.Data;
 using People_Power.Interfaces;
 using People_Power.Repositories;
 
@@ -12,11 +12,12 @@ builder.Services.AddControllersWithViews();
 // Add repositories
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-builder.Services.AddScoped<IUserRepository, UserRepository>(); 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddScoped<IPayrollRepository, PayrollRepository>();
 
 // Configure DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
