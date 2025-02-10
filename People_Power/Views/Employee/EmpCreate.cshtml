@@ -46,12 +46,6 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label asp-for="Salary" class="form-label fw-bold">Salary</label>
-                                <input asp-for="Salary" class="form-control rounded-pill" />
-                                <span asp-validation-for="Salary" class="text-danger"></span>
-                            </div>
-
-                            <div class="col-md-6">
                                 <label asp-for="DepartmentId" class="form-label fw-bold">Department</label>
                                 <select asp-for="DepartmentId" class="form-select rounded-pill" asp-items="ViewBag.Departments"></select>
                                 <span asp-validation-for="DepartmentId" class="text-danger"></span>

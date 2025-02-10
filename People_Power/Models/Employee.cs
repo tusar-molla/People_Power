@@ -11,8 +11,7 @@
         public string Address { get; set; }
         public DateTime DateOfJoining { get; set; }
         public string Position { get; set; }
-        public decimal Salary { get; set; }
-
+       
         public ICollection<Leave>? Leaves { get; set; }
         public ICollection<Attendance>? Attendances { get; set; }
         public ICollection<Payroll>? Payrolls { get; set; }

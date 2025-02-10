@@ -41,11 +41,14 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="EmpCreate">Create Employee</a>
                         </li>
-                        <li class="nav-item">
+                      @*   <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="EmpCreate">Create Employee</a>
-                        </li>
+                        </li> *@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Payroll" asp-action="PrCreate">Create Payroll</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Leave" asp-action="CreateLeave">Create Leave Appliactions</a>
                         </li>
                         <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="UserList">User List</a></li>
                         @* <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="AssignRole">Assign Role</a></li> *@
@@ -68,6 +71,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

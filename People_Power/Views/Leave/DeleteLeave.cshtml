@@ -1,0 +1,42 @@
+﻿@model People_Power.Models.Leave
+
+<h2>Delete Leave</h2>
+
+<p>Are you sure you want to delete this leave entry?</p>
+
+<table class="table">
+    <tr>
+        <th>Employee Name</th>
+        <td>@Model.Employee.Name</td>
+    </tr>
+    <tr>
+        <th>Leave Type</th>
+        <td>@Model.LeaveType</td>
+    </tr>
+    <tr>
+        <th>Status</th>
+        <td>@Model.Status</td>
+    </tr>
+    <tr>
+        <th>Leave Start Date</th>
+        <td>@Model.LeaveStartDate.ToString("d")</td>
+    </tr>
+    <tr>
+        <th>Leave End Date</th>
+        <td>@Model.LeaveEndDate.ToString("d")</td>
+    </tr>
+    <tr>
+        <th>Reason</th>
+        <td>@Model.Reason</td>
+    </tr>
+    <tr>
+        <th>Approved By</th>
+        <td>@Model.ApprovedBy?.UserName</td>
+    </tr>
+</table>
+
+<form asp-action="DeleteLeave" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="@Url.Action("LeaveList")" class="btn btn-secondary">Cancel</a>
+</form>

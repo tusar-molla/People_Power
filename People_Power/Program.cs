@@ -18,6 +18,7 @@ builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IPayrollRepository, PayrollRepository>();
+builder.Services.AddScoped<ILeaveRepository, LeaveRepository>();
 
 // Configure DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>

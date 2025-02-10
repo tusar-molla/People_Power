@@ -1,0 +1,35 @@
+﻿@model IEnumerable<People_Power.Models.Leave>
+
+<h2>Leaves</h2>
+
+<p>
+    <a href="@Url.Action("CreateLeave")" class="btn btn-primary">Create New Leave</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Employee Name</th>
+            <th>Leave Type</th>
+            <th>Status</th>
+            <th>Leave Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var leave in Model)
+        {
+            <tr>
+                <td>@leave.Employee?.Name</td>
+                <td>@leave.LeaveType</td>
+                <td>@leave.Status</td>
+                <td>@leave.LeaveStartDate.ToString("d") - @leave.LeaveEndDate.ToString("d")</td>
+                <td>
+                    <a href="@Url.Action("LeaveListByID", new { id = leave.Id })" class="btn btn-info">Details</a>
+                    <a href="@Url.Action("EditLeave", new { id = leave.Id })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("DeleteLeave", new { id = leave.Id })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

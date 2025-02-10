@@ -19,8 +19,7 @@
                 <th>Department</th>
                 <th>Address</th>
                 <th>Date of Joining</th>
-                <th>Position</th>
-                <th>Salary</th>
+                <th>Position</th>               
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
@@ -36,8 +35,7 @@
                         <td>@employee.Department?.Name</td>
                         <td>@employee.Address</td>
                         <td>@employee.DateOfJoining.ToString("yyyy-MM-dd")</td>
-                        <td>@employee.Position</td>
-                        <td>@employee.Salary.ToString("C")</td>
+                        <td>@employee.Position</td>                      
                         <td class="text-center">
                             <a href="@Url.Action("EmpEdit", "Employee", new { id = employee.Id })" class="btn btn-warning btn-sm me-2">
                                 <i class="bi bi-pencil-square"></i> Edit
