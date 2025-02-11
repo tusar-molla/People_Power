@@ -1,0 +1,34 @@
+﻿@model People_Power.Models.Department
+
+<div class="container mt-4">
+    <h2 class="fw-bold">Create Sub Department</h2>
+
+    <form asp-action="SubsDeptCreate" method="post">
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Sub Department Name</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">Description</label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="ParentDepartmentId" class="form-label">Parent Department</label>
+            <select asp-for="ParentDepartmentId" asp-items="ViewBag.Departments" class="form-select">
+                <option value="">Select Parent Department</option>
+            </select>
+            <span asp-validation-for="ParentDepartmentId" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Sub Department</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

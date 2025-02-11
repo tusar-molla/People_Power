@@ -1,0 +1,29 @@
+﻿@model IEnumerable<People_Power.Models.Department>
+
+<div class="container mt-4">
+    <h2 class="fw-bold">Sub Departments</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Parent Department</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var department in Model)
+            {
+                <tr>
+                    <td>@department.Name</td>
+                    <td>@department.Description</td>
+                    <td>@department.ParentDepartment?.Name</td>
+                    <td>
+                        <a href="@Url.Action("DeptEdit", "Department", new { id = department.Id })" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="@Url.Action("DeptDelete", "Department", new { id = department.Id })" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

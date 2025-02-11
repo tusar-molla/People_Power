@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using People_Power.Data;
 
@@ -11,9 +12,11 @@ using People_Power.Data;
 namespace People_Power.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250211083524_attendanceEnum")]
+    partial class attendanceEnum
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,12 +74,7 @@ namespace People_Power.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ParentDepartmentId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ParentDepartmentId");
 
                     b.ToTable("Departments");
                 });
@@ -278,15 +276,6 @@ namespace People_Power.Migrations
                     b.Navigation("Employee");
                 });
 
-            modelBuilder.Entity("People_Power.Models.Department", b =>
-                {
-                    b.HasOne("People_Power.Models.Department", "ParentDepartment")
-                        .WithMany("SubDepartments")
-                        .HasForeignKey("ParentDepartmentId");
-
-                    b.Navigation("ParentDepartment");
-                });
-
             modelBuilder.Entity("People_Power.Models.Employee", b =>
                 {
                     b.HasOne("People_Power.Models.Department", "Department")
@@ -340,8 +329,6 @@ namespace People_Power.Migrations
             modelBuilder.Entity("People_Power.Models.Department", b =>
                 {
                     b.Navigation("Employees");
-
-                    b.Navigation("SubDepartments");
                 });
 
             modelBuilder.Entity("People_Power.Models.Employee", b =>

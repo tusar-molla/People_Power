@@ -1,0 +1,34 @@
+﻿@model IEnumerable<People_Power.Models.Attendance>
+
+<h2>Attendance Records</h2>
+
+<a asp-action="AttdnceCreate" class="btn btn-primary mb-3">Create New Attendance</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Date</th>
+            <th>Check-In</th>
+            <th>Check-Out</th>
+            <th>Approval Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var attendance in Model)
+        {
+            <tr>
+                <td>@attendance.Employee?.Name</td>
+                <td>@attendance.Date.ToShortDateString()</td>
+                <td>@attendance.CheckInTime.ToShortTimeString()</td>
+                <td>@attendance.CheckOutTime?.ToShortTimeString()</td>
+                <td>@attendance.ApprovalStatus</td>
+                <td>
+                    <a asp-action="AttdnceEdit" asp-route-id="@attendance.Id" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="AttdnceDelete" asp-route-id="@attendance.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>   
+        }
+    </tbody>
+</table>

@@ -1,12 +1,18 @@
 ﻿@model IEnumerable<People_Power.Models.Department>
 
 <div class="container mt-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-2">
         <h2 class="fw-bold">Departments</h2>
-        <a href="@Url.Action("DeptCreate", "Department")" class="btn btn-success">
-            <i class="bi bi-plus-circle"></i> Add Department
-        </a>
+        <div class="d-flex gap-2">
+            <a href="@Url.Action("DeptCreate", "Department")" class="btn btn-success btn-sm">
+                <i class="bi bi-plus-circle"></i> Add Department
+            </a>
+            <a href="@Url.Action("SubsDeptCreate", "Department")" class="btn btn-success btn-sm">
+                <i class="bi bi-plus-circle"></i> Add Sub Department
+            </a>
+        </div>
     </div>
+</div>
 
     @if (!Model.Any())
     {

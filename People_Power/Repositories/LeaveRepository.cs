@@ -13,8 +13,6 @@ namespace People_Power.Repositories
         {
             _context = context;
         }
-
-
         public IEnumerable<Employee> GetEmployees()
         {
             var employees = _context.Employees.ToList();
