@@ -3,42 +3,60 @@
     ViewData["Title"] = "Edit Payroll";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h2 class="mb-4 text-center text-primary">@ViewData["Title"]</h2>
 
 <form id="payrollForm" asp-action="PrEdit" method="post" class="needs-validation" novalidate>
     <input type="hidden" asp-for="Id" />
 
-    <div class="form-group">
-        <label asp-for="EmployeeId" class="form-label">Employee</label>
-        <select asp-for="EmployeeId" asp-items="@(new SelectList(ViewBag.Employees, "Id", "Name", Model.EmployeeId))" class="form-control" required>
-            <option value="">Select Employee</option>
-        </select>
-        <span asp-validation-for="EmployeeId" class="text-danger"></span>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="EmployeeId" class="form-label">Employee</label>
+                <select asp-for="EmployeeId" asp-items="@(new SelectList(ViewBag.Employees, "Id", "Name", Model.EmployeeId))" class="form-control" required>
+                    <option value="">Select Employee</option>
+                </select>
+                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="PayrollDate" class="form-label">Payroll Date</label>
+                <input asp-for="PayrollDate" type="date" class="form-control" required />
+                <span asp-validation-for="PayrollDate" class="text-danger"></span>
+            </div>
+        </div>
     </div>
 
-    <div class="form-group">
-        <label asp-for="BasicSalary" class="form-label">Basic Salary</label>
-        <input asp-for="BasicSalary" type="number" class="form-control" required min="0" />
-        <span asp-validation-for="BasicSalary" class="text-danger"></span>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="BasicSalary" class="form-label">Basic Salary</label>
+                <input asp-for="BasicSalary" type="number" class="form-control" required min="0" />
+                <span asp-validation-for="BasicSalary" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Bonus" class="form-label">Bonus</label>
+                <input asp-for="Bonus" type="number" class="form-control" required min="0" />
+                <span asp-validation-for="Bonus" class="text-danger"></span>
+            </div>
+        </div>
     </div>
 
-    <div class="form-group">
-        <label asp-for="Bonus" class="form-label">Bonus</label>
-        <input asp-for="Bonus" type="number" class="form-control" required min="0" />
-        <span asp-validation-for="Bonus" class="text-danger"></span>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Deduction" class="form-label">Deduction</label>
+                <input asp-for="Deduction" type="number" class="form-control" required min="0" />
+                <span asp-validation-for="Deduction" class="text-danger"></span>
+            </div>
+        </div>
     </div>
 
-    <div class="form-group">
-        <label asp-for="Deduction" class="form-label">Deduction</label>
-        <input asp-for="Deduction" type="number" class="form-control" required min="0" />
-        <span asp-validation-for="Deduction" class="text-danger"></span>
+    <div class="form-group text-center mt-4">
+        <button type="submit" class="btn btn-success btn-lg">Save</button>
     </div>
-
-    <div class="form-group">
-        <label asp-for="PayrollDate" class="form-label">Payroll Date</label>
-        <input asp-for="PayrollDate" type="date" class="form-control" required />
-        <span asp-validation-for="PayrollDate" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-success mt-3">Save</button>
 </form>

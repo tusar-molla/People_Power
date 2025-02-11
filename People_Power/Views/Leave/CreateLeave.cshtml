@@ -11,7 +11,13 @@
   
     <div class="form-group">
         <label for="LeaveType">Leave Type</label>
-        <input type="text" class="form-control" id="LeaveType" name="LeaveType" required />
+        <select asp-for="LeaveType" class="form-control">
+            <option value="Pending">Casual Leave</option>
+            <option value="Approved">Annual Leave</option>
+            <option value="Rejected">Sick Leave</option>
+            <option value="Rejected">Marriage Leave</option>
+            <option value="Rejected">Maternity Leave</option>
+        </select>
     </div>
     <div class="form-group">
         <label for="LeaveStartDate">Leave Start Date</label>
