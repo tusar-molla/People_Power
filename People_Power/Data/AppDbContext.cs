@@ -13,6 +13,7 @@ namespace People_Power.Data
         public DbSet<Leave> Leaves { get; set; }
         public DbSet<Attendance> Attendances { get; set; }
         public DbSet<Payroll> Payrolls { get; set; }
+        public DbSet<CompanySettings> CompanySettings { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -35,6 +36,21 @@ namespace People_Power.Data
                 PasswordHash = adminPasswordHash
             };
             modelBuilder.Entity<User>().HasData(adminUser);
+
+            // Seeding CompanySettings
+            modelBuilder.Entity<CompanySettings>().HasData(
+                new CompanySettings
+                {
+                    Id = 1, 
+                    CompanyName = "People Power Inc.",
+                    Address = "123 Business Street, City, Country",
+                    PhoneNumber = "+123456789",
+                    Email = "contact@peoplepower.com",
+                    TaxNumber = "PP123456",
+                    FiscalYearStart = new DateTime(2024, 1, 1),
+                    FiscalYearEnd = new DateTime(2024, 12, 31),
+                    StandardWorkingHours = 8
+                });
         }
     }
 }

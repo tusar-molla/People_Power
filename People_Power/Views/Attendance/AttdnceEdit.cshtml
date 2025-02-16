@@ -1,35 +1,66 @@
 ﻿@model People_Power.Models.Attendance
 
-<h2>Create Attendance</h2>
+<h2 class="text-center text-primary mb-4">Edit Attendance</h2>
 
-<form asp-action="AttdnceEdit" method="post">
-    <div class="form-group">
-        <label>Employee</label>
-        <select asp-for="EmployeeId" class="form-control" asp-items="@(new SelectList(ViewBag.Employees, "Id", "Name"))">
-            <option value="">-- Select Employee --</option>
-        </select>
-    </div>
+<div class="card shadow-lg p-4 bg-white rounded">
+    <form asp-action="AttdnceEdit" method="post" class="needs-validation" novalidate>
+        <input type="hidden" asp-for="Id" />
 
-    <div class="form-group">
-        <label>Date</label>
-        <input asp-for="Date" type="date" class="form-control" />
-    </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label fw-bold">Employee</label>
+                    <select asp-for="EmployeeId" class="form-control" asp-items="@(new SelectList(ViewBag.Employees, "Id", "Name", Model.EmployeeId))" required>
+                        <option value="">-- Select Employee --</option>
+                    </select>
+                    <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                </div>
+            </div>
 
-    <div class="form-group">
-        <label>Check-In Time</label>
-        <input asp-for="CheckInTime" type="time" class="form-control" />
-    </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label fw-bold">Date</label>
+                    <input asp-for="Date" type="date" class="form-control" required />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
 
-    <div class="form-group">
-        <label>Check-Out Time</label>
-        <input asp-for="CheckOutTime" type="time" class="form-control" />
-    </div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label fw-bold">Check-In Time</label>
+                    <input asp-for="CheckInTime" type="time" class="form-control" required />
+                    <span asp-validation-for="CheckInTime" class="text-danger"></span>
+                </div>
+            </div>
 
-    <div class="form-group">
-        <label>Approval Status</label>
-        <input asp-for="ApprovalStatus" class="form-control" />
-    </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label fw-bold">Check-Out Time</label>
+                    <input asp-for="CheckOutTime" type="time" class="form-control" required />
+                    <span asp-validation-for="CheckOutTime" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
 
-    <button type="submit" class="btn btn-success mt-3">Submit</button>
-</form> 
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label fw-bold">Approval Status</label>
+                    <select asp-for="ApprovalStatus" class="form-control" required>
+                        <option value="">Select Status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                    <span asp-validation-for="ApprovalStatus" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
 
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary btn-lg shadow">Update</button>
+        </div>
+    </form>
+</div>
